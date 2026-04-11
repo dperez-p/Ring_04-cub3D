@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:27:43 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/11 10:50:38 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/11 20:33:04 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@
 #include <unistd.h>
 #include <X11/keysym.h>
 #include <X11/X.h>
+
+
+/***************************** MACROS *****************************/
+
+#define WIN_HEIGHT 480
+#define WIN_WIDTH 640
+
+
+/***************************** ERROR_MESSAGE *****************************/
+#define ERR_USAGE "usage: ./cub3d <path/to/map.cub>"
 
 /***************************** STRUCTS *****************************/
 
@@ -115,7 +125,7 @@ typedef struct s_player
 	int		rotate;
 }	t_player;
 
-typedef struct s_cub3d
+typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
@@ -129,10 +139,13 @@ typedef struct s_cub3d
 	int			**textures;
 	t_texinfo	texinfo;
 	t_img		minimap;
-}	t_cub3d;
+}	t_data;
 
 /***************************** FUNCTIONS *****************************/
 
 int	err_msg(char *detail, char *str, int code);
+
+/* init */
+
 
 #endif
