@@ -6,15 +6,54 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 20:09:45 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/11 20:41:53 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/12 10:41:39 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	init_textinfo(t_data *data)
+/* Init clean img */
+void	init_img_clean(t_img *img)
 {
+	img->img = NULL;
+	img->adrres = NULL;
+	img->pixel_bits = 0;
+	img->size_line = 0;
+	img->endian = 0;
+}
 
+/* Init clean ray */
+void	init_ray_clean(t_ray *ray)
+{
+	ray->camera_x = 0;
+	ray->dir_x = 0;
+	ray->dir_y = 0;
+	ray->map_x = 0;
+	ray->map_y = 0;
+	ray->step_x = 0;
+	ray->step_y = 0;
+	ray->sidedist_x = 0;
+	ray->sidedist_y = 0;
+	ray->deltadist_x = 0;
+	ray->deltadist_y = 0;
+	ray->wall_dist = 0;
+	ray->wall_x = 0;
+	ray->side = 0;
+	ray->line_height = 0;
+	ray->draw_start = 0;
+	ray->draw_end = 0;
+}
+
+/* Inicialize map info */
+static void	init_mapinfo(t_mapinfo *mapinfo)
+{
+	mapinfo->fd = 0;
+	mapinfo->line_count = 0;
+	mapinfo->path = NULL;
+	mapinfo->file = NULL;
+	mapinfo->height = 0;
+	mapinfo->width = 0;
+	mapinfo->index_end_of_map = 0;
 }
 
 /* Init player data */
@@ -41,6 +80,10 @@ void	init_data(t_data *data)
 	data->win_height = WIN_HEIGHT;
 	data->win_width = WIN_WIDTH;
 	init_player(&data->player);
-	init_textinfo(&data->texinfo)----; //missing -----
-
+	init_texinfo(&data->texinfo);
+	data->map = NULL;
+	init_mapinfo(&data->mapinfo);
+	init_img_clean(&data->minimap);
+	data->texture_pixels = NULL;
+	data->textures = NULL;
 }

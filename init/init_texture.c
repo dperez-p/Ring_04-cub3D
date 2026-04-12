@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/09 10:24:21 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/12 11:38:23 by dperez-p         ###   ########.fr       */
+/*   Created: 2026/04/12 10:27:04 by dperez-p          #+#    #+#             */
+/*   Updated: 2026/04/12 10:32:43 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-static int	parse_args(t_data *data, char **argv)
+/* Inicialize texture info */
+void	init_texinfo(t_texinfo *texture)
 {
-	if (check_file(argv[1], true) == 1)
-		clean_and_exit(data, 1);
-
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	t_data	data;
-
-	if (argc != 2)
-		return (err_msg("Usage", ERROR_USAGE, 1));
-	init_data(&data);
-	if (parse_args(&data, argv) != 0)
-		return (1);
-
+	texture->north = NULL;
+	texture->south = NULL;
+	texture->west = NULL;
+	texture->east = NULL;
+	texture->floor = 0;
+	texture->ceiling = 0;
+	texture->hex_floor = 0x0;
+	texture->hex_ceiling = 0x0;
+	texture->size = TEX_SIZE;
+	texture->step = 0.0;
+	texture->possition = 0.0;
+	texture->x = 0;
+	texture->y = 0;
 }

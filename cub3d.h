@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:27:43 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/11 20:33:04 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/12 11:24:57 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,19 @@
 #define WIN_HEIGHT 480
 #define WIN_WIDTH 640
 
+#define TEX_SIZE 64
+
 
 /***************************** ERROR_MESSAGE *****************************/
-#define ERR_USAGE "usage: ./cub3d <path/to/map.cub>"
+#define ERROR_USAGE "usage: ./cub3d <path/to/map.cub>"
 
+enum e_texture_index
+{
+	NORTH = 0,
+	SOUTH = 1,
+	EAST = 2,
+	WEST = 3
+};
 /***************************** STRUCTS *****************************/
 
 typedef struct s_img
@@ -59,6 +68,7 @@ typedef struct s_textinfo
 	int				*floor;
 	int				*ceiling;
 	unsigned long	hex_floor;
+	unsigned long	hex_ceiling;
 	int				size;
 	int				index;
 	double			step;
@@ -101,7 +111,7 @@ typedef struct s_ray
 	double	sidedist_x;
 	double	sidedist_y;
 	double	deltadist_x;
-	double	dektadist_y;
+	double	deltadist_y;
 	double	wall_dist;
 	double	wall_x;
 	int		side;
@@ -146,6 +156,14 @@ typedef struct s_data
 int	err_msg(char *detail, char *str, int code);
 
 /* init */
+void	init_data(t_data *data);
+void	init_texinfo(t_texinfo *texture);
+void	init_img_clean(t_img *img);
+void	init_ray_clean(t_ray *ray);
 
+/* exit */
+void	clean_and_exit(t_data *data, int code);
+int		quit_cub3d(t_data  *data);
+int		free_data(t_data *data)
 
 #endif
