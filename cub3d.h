@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:27:43 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/14 10:47:55 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/14 18:21:31 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,6 @@ int		free_data(t_data *data);
 
 /* parse */
 int	check_file(char	*ag, bool cub);
+void	parse_data(char *path, t_data *data);
 
 #endif
