@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:27:43 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/12 11:24:57 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/14 10:47:55 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@
 
 #define TEX_SIZE 64
 
+# ifndef O_DIRECTORY
+#  define O_DIRECTORY 00200000
+# endif
 
 /***************************** ERROR_MESSAGE *****************************/
 #define ERROR_USAGE "usage: ./cub3d <path/to/map.cub>"
@@ -164,6 +167,9 @@ void	init_ray_clean(t_ray *ray);
 /* exit */
 void	clean_and_exit(t_data *data, int code);
 int		quit_cub3d(t_data  *data);
-int		free_data(t_data *data)
+int		free_data(t_data *data);
+
+/* parse */
+int	check_file(char	*ag, bool cub);
 
 #endif

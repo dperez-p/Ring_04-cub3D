@@ -6,13 +6,14 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 11:04:36 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/12 11:38:10 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/12 11:41:07 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-/* Clean the arrays and info and exit */
+/* Cleans all resources (MLX, window, and allocated memory)
+	and exits the program */
 void	clean_and_exit(t_data *data, int code)
 {
 	if (!data)

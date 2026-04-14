@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/09 10:24:21 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/14 11:01:46 by dperez-p         ###   ########.fr       */
+/*   Created: 2026/04/14 10:52:32 by dperez-p          #+#    #+#             */
+/*   Updated: 2026/04/14 11:00:31 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-static int	parse_args(t_data *data, char **argv)
+void	parse_data(char *path, t_data *data)
 {
-	if (check_file(argv[1], true) == 1)
-		clean_and_exit(data, 1);
-	parse_data(argv[1], data);
-	if (condition)
-	{
-		/* code */
-	}
-
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	t_data	data;
-
-	if (argc != 2)
-		return (err_msg("Usage", ERROR_USAGE, 1));
-	init_data(&data);
-	if (parse_args(&data, argv) != 0)
-		return (1);
 
 }
