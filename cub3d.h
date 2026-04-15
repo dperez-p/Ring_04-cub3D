@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:27:43 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/14 18:21:31 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/15 20:54:26 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,16 @@ enum e_texture_index
 	EAST = 2,
 	WEST = 3
 };
+
+enum e_output
+{
+	SUCCESS = 0,
+	FAILURE = 1,
+	ERR = 2,
+	BREAK = 3,
+	CONTINUE = 4
+};
+
 /***************************** STRUCTS *****************************/
 
 typedef struct s_img
