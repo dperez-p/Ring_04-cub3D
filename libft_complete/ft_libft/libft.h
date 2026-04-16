@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:34:03 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/12 11:20:03 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/16 10:21:16 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,5 +129,7 @@ int		ft_verify(char spec, va_list args, int fd);
 int		ft_putpointer_fd(unsigned long p, int fd);
 
 int		ft_putbase_fd(long long n, char *base, int div, int fd);
+
+char	*ft_strndup(const char *s, size_t n);
 
 #endif

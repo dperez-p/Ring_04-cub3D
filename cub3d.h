@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:27:43 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/15 20:54:26 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/16 11:16:38 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,9 @@ int		quit_cub3d(t_data  *data);
 int		free_data(t_data *data);
 
 /* parse */
-int	check_file(char	*ag, bool cub);
+int		check_file(char	*ag, bool cub);
 void	parse_data(char *path, t_data *data);
+int		process_file_data(t_data *data, char **map);
+int		fill_color_textures(t_data *data, t_texinfo *textures, char *line, int j);
 
 #endif

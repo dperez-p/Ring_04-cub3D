@@ -6,12 +6,41 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 18:20:52 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/15 20:59:38 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/16 10:56:03 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/* Get the leng of the path and return the path */
+static char	*get_texture_path(char *line, int j)
+{
+	int		len;
+	char	*path;
+
+	while (line[j] && (line[j] == ' ' || line[j] == '\t'))
+		j++;
+	len = 0;
+	while (line[j + len] && line[j + len] != ' ' &&
+			line[j + len] != '\t' && line[j + len] != '\n')
+		len++;
+	if (len == 0)
+		return (NULL);
+	path = ft_strndup(&line[j], len);
+	if (!path)
+		return (NULL);
+	j += len;
+	while (line[j] && (line[j] == ' ' || line[j] == '\t'))
+		j++;
+	if (line[j] && line[j] != '\n')
+	{
+		free(path);
+		return (NULL);
+	}
+	return (path);
+}
+
+/* Extract the texture path and check for duplicates */
 static int	fill_direction_texture(t_texinfo *textures, char *line, int j)
 {
 	if (line[j] == 'N' && line[j + 1] == 'O')
@@ -50,7 +79,7 @@ static int	process_line(t_data *data, char *line)
 	while (line[j] && (line[j] == ' ' || line[j] == '\t'))
 		j++;
 	if (line[j] == '\0'|| line[j] == '\n')
-		return (4);
+		return (CONTINUE);
 	if (ft_strncmp(&line[j], "NO ", 3) == 0 || ft_strncmp(&line[j], "SO ", 3) == 0
 			|| ft_strncmp(&line[j], "WE ", 3) == 0
 			|| ft_strncmp(&line[j], "EA ", 3) == 0)
@@ -68,12 +97,25 @@ static int	process_line(t_data *data, char *line)
 	return (err_msg(NULL, "Invalid configuration line", 1));
 }
 
+/* Check if all the info is correct and filled */
+static int	all_info_filled(t_data *data)
+{
+	if (!data->texinfo.north || !data->texinfo.south
+		|| !data->texinfo.east || !data->texinfo.west)
+		return (FAILURE);
+	if (data->texinfo.floor == -1 || data->texinfo.ceiling == -1)
+		return (FAILURE);
+	return (SUCCESS);
+}
+
+/* Process the data to get the texture path and start with the map creation */
 int	process_file_data(t_data *data, char **map)
 {
 	int	i;
 	int	status;
 
 	i = 0;
+	status = CONTINUE;
 	while (map[i])
 	{
 		status = process_line(data, map[i]);
@@ -85,9 +127,9 @@ int	process_file_data(t_data *data, char **map)
 		}
 		i++;
 	}
-	if (!all_info_filled(data))
-	{
-		return (err_msg("Config", "Missing textures or colors", 1));
-	}
-	return (0);
+	if (status != BREAK)
+		return (err_msg(NULL, "Map not found", FAILURE));
+	if (all_info_filled(data) == FAILURE)
+		return (err_msg("Config", "Missing textures or colors", FAILURE));
+	return (create_map(data, map, i));
 }

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_texture.c                                     :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/12 10:27:04 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/16 10:47:17 by dperez-p         ###   ########.fr       */
+/*   Created: 2026/04/16 10:15:59 by dperez-p          #+#    #+#             */
+/*   Updated: 2026/04/16 10:21:54 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include <stdlib.h>
+#include <string.h>
+#include "libft.h"
 
-/* Inicialize texture info */
-void	init_texinfo(t_texinfo *texture)
+char	*ft_strndup(const char *s, size_t n)
 {
-	texture->north = NULL;
-	texture->south = NULL;
-	texture->west = NULL;
-	texture->east = NULL;
-	texture->floor = -1;
-	texture->ceiling = -1;
-	texture->hex_floor = 0x0;
-	texture->hex_ceiling = 0x0;
-	texture->size = TEX_SIZE;
-	texture->step = 0.0;
-	texture->possition = 0.0;
-	texture->x = 0;
-	texture->y = 0;
+	size_t len;
+	char *copy;
+
+	len = 0;
+	while (len < n && s[len] != '\0')
+	{
+		len++;
+	}
+	copy = (char *)malloc(len + 1);
+	if (copy == NULL)
+		return NULL;
+	ft_memcpy(copy, s, len);
+	copy[len] = '\0';
+	return copy;
 }
