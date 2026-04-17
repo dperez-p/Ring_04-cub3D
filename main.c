@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:24:21 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/16 20:13:03 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/17 20:01:12 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int	parse_args(t_data *data, char **argv)
 		clean_and_exit(data, 1);
 	parse_data(argv[1], data);
 	if (process_file_data(data, data->mapinfo.file) == FAILURE)
+		return (free_data(data));
+	if (validate_map(data, data->map) == FAILURE)
 		return (free_data(data));
 
 	return (0);
