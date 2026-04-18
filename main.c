@@ -6,11 +6,25 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:24:21 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/17 20:01:12 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/18 20:56:19 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	check_valid_rgb(int *rgb)
+{
+	int	i;
+
+	i = 0;
+	while (i < 3)
+	{
+		if (rgb[i] < 0 || rgb[i] > 255)
+			return (err_msg(NULL, "Color range must be 0-255", FAILURE));
+		i++;
+	}
+	return (SUCCESS);
+}
 
 static int	parse_args(t_data *data, char **argv)
 {
@@ -21,7 +35,9 @@ static int	parse_args(t_data *data, char **argv)
 		return (free_data(data));
 	if (validate_map(data, data->map) == FAILURE)
 		return (free_data(data));
-
+	if (validate_textures(data, &data->texinfo) == FAILURE)
+		return (free_data(data));
+	/*init_player_direction*/
 	return (0);
 }
 

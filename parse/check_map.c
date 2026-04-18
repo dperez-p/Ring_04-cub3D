@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 09:30:58 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/17 20:00:53 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/18 20:22:53 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 /* Check if is a transitable character or player next to a void space */
 static int	check_adjacent_spaces(t_data *data, char **map, int y, int x)
 {
-	if (y == 0 || y == data->mapinfo.height - 1 ||
-		x == 0 || x == data->mapinfo.width - 1)
+	if (y == 0 || y == data->mapinfo.height - 1
+		|| x == 0 || x == data->mapinfo.width - 1)
 		return (FAILURE);
-	if (map[y - 1][x] == ' ' || map[y + 1][x] == ' ' ||
-		map[y][x - 1] == ' ' || map[y][x + 1] == ' ')
+	if (map[y - 1][x] == ' ' || map[y + 1][x] == ' '
+		|| map[y][x - 1] == ' ' || map[y][x + 1] == ' ')
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -30,10 +30,13 @@ static int	check_cell(t_data *data, char **map, int y, int x)
 	if (ft_strchr("0NSEW", map[y][x]))
 	{
 		if (check_adjacent_spaces(data, map, y, x) == FAILURE)
-			return (err_msg(NULL, "Map is open/not surrounded by walls", FAILURE));
+		{
+			err_msg(NULL, "Map is open/not surrounded by walls", FAILURE);
+			return (FAILURE);
+		}
 	}
 	else if (!ft_strchr(" 01NSEW", map[y][x]))
-				return (err_msg(NULL, "Invalid character in map", FAILURE));
+		return (err_msg(NULL, "Invalid character in map", FAILURE));
 	return (SUCCESS);
 }
 
@@ -71,12 +74,12 @@ static int	validate_elements_and_walls(t_data *data, char **map)
 static int	check_map_is_at_the_end(t_mapinfo *map)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = map->index_end_of_map;
 	while (map->file[i])
 	{
-		J = 0;
+		j = 0;
 		while (map->file[i][j])
 		{
 			if (map->file[i][j] != ' ' && map->file[i][j] != '\t'
@@ -90,6 +93,7 @@ static int	check_map_is_at_the_end(t_mapinfo *map)
 	return (SUCCESS);
 }
 
+/* Validate the map and create with security */
 int	validate_map(t_data *data, char **map_tab)
 {
 	if (!map_tab)

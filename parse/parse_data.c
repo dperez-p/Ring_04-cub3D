@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 10:52:32 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/14 18:18:48 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/18 20:29:05 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ static int	get_number_lines(char *path)
 		err_msg(path, strerror(errno), errno);
 		return (-1);
 	}
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		count++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (count);
@@ -42,7 +44,8 @@ static void	fill_table(t_data *data)
 	int		row;
 
 	row = 0;
-	while ((line = get_next_line(data->mapinfo.fd)) != NULL)
+	line = get_next_line(data->mapinfo.fd);
+	while (line != NULL)
 	{
 		data->mapinfo.file[row] = ft_strdup(line);
 		if (!(data->mapinfo.file[row]))
@@ -55,6 +58,7 @@ static void	fill_table(t_data *data)
 		}
 		row++;
 		free(line);
+		line = get_next_line(data->mapinfo.fd);
 	}
 	data->mapinfo.file[row] = NULL;
 }

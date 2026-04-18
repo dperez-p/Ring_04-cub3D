@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 11:04:36 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/12 11:41:07 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/18 20:32:10 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	clean_and_exit(t_data *data, int code)
 }
 
 /* Close cub3D safety */
-int	quit_cub3d(t_data  *data)
+int	quit_cub3d(t_data *data)
 {
 	clean_and_exit(data, 0);
 	return (0);

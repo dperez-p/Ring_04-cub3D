@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 11:12:47 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/12 11:35:34 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/18 20:32:25 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* Frees map data and closes the file descriptor */
 static void	free_map(t_data *data)
 {
-	if(data->mapinfo.fd > 0)
+	if (data->mapinfo.fd > 0)
 	{
 		close(data->mapinfo.fd);
 		data->mapinfo.fd = -1;

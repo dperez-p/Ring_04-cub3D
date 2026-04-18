@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 09:27:32 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/16 10:35:23 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/18 20:46:28 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static bool	is_dir(char *ag)
 {
 	int		fd;
 
-	fd = open(ag, O_DIRECTORY || O_RDONLY);
+	fd = open(ag, O_DIRECTORY | O_RDONLY);
 	if (fd == -1)
 	{
 		return (false);
@@ -27,7 +27,7 @@ static bool	is_dir(char *ag)
 }
 
 /* Check if the extension of a file is .cub */
-static bool	is_cubed_file(char * ag)
+static bool	is_cubed_file(char *ag)
 {
 	size_t	len;
 
@@ -40,7 +40,7 @@ static bool	is_cubed_file(char * ag)
 }
 
 /* Check if the extension of a file is .xpm */
-static bool	is_xpm_file(char * ag)
+static bool	is_xpm_file(char *ag)
 {
 	size_t	len;
 

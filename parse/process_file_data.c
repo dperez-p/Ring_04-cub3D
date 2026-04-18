@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 18:20:52 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/16 10:56:03 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/18 20:19:47 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static char	*get_texture_path(char *line, int j)
 	while (line[j] && (line[j] == ' ' || line[j] == '\t'))
 		j++;
 	len = 0;
-	while (line[j + len] && line[j + len] != ' ' &&
-			line[j + len] != '\t' && line[j + len] != '\n')
+	while (line[j + len] && line[j + len] != ' '
+		&& line[j + len] != '\t' && line[j + len] != '\n')
 		len++;
 	if (len == 0)
 		return (NULL);
@@ -78,15 +78,17 @@ static int	process_line(t_data *data, char *line)
 	j = 0;
 	while (line[j] && (line[j] == ' ' || line[j] == '\t'))
 		j++;
-	if (line[j] == '\0'|| line[j] == '\n')
+	if (line[j] == '\0' || line[j] == '\n')
 		return (CONTINUE);
-	if (ft_strncmp(&line[j], "NO ", 3) == 0 || ft_strncmp(&line[j], "SO ", 3) == 0
-			|| ft_strncmp(&line[j], "WE ", 3) == 0
-			|| ft_strncmp(&line[j], "EA ", 3) == 0)
+	if (ft_strncmp(&line[j], "NO ", 3) == 0
+		|| ft_strncmp(&line[j], "SO ", 3) == 0
+		|| ft_strncmp(&line[j], "WE ", 3) == 0
+		|| ft_strncmp(&line[j], "EA ", 3) == 0)
 	{
-		return (fill_direction_textures(&data->texinfo, line, j));
+		return (fill_direction_texture(&data->texinfo, line, j));
 	}
-	else if (ft_strncmp(&line[j], "F ", 2) == 0 || ft_strncmp(&line[j], "C ", 2) == 0)
+	else if (ft_strncmp(&line[j], "F ", 2) == 0
+		|| ft_strncmp(&line[j], "C ", 2) == 0)
 	{
 		return (fill_color_textures(data, &data->texinfo, line, j));
 	}
