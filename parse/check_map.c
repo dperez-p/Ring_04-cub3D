@@ -6,7 +6,7 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 09:30:58 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/18 20:22:53 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/19 14:13:08 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static int	validate_elements_and_walls(t_data *data, char **map)
 		{
 			if (ft_strchr("NSEW", map[y][x]))
 			{
-				data->player.dir_x = (double)x + 0.5;
-				data->player.dir_y = (double)y + 0.5;
+				data->player.pos_x = (double)x + 0.5;
+				data->player.pos_y = (double)y + 0.5;
 				data->player.dir = map[y][x];
 				player++;
 			}
