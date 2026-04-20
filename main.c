@@ -6,12 +6,13 @@
 /*   By: dperez-p <dperez-p@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:24:21 by dperez-p          #+#    #+#             */
-/*   Updated: 2026/04/19 16:49:52 by dperez-p         ###   ########.fr       */
+/*   Updated: 2026/04/20 10:00:40 by dperez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/* Check for validations and parse args untill player direction */
 static int	parse_args(t_data *data, char **argv)
 {
 	if (check_file(argv[1], true) == 1)
@@ -36,5 +37,12 @@ int	main(int argc, char **argv)
 	init_data(&data);
 	if (parse_args(&data, argv) != 0)
 		return (1);
-
+	//initmlx
+	//init textures
+	//controls
+	//render
+	//listen for inputs
+	//mlx loop hook
+	//mlx loop
+	return (0);
 }
